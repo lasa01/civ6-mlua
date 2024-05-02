@@ -1,8 +1,9 @@
-Both mlua and rlua are distributed under the MIT license, which is reproduced
+Both civ6-mlua, mlua and rlua are distributed under the MIT license, which is reproduced
 below:
 
 MIT License
 
+Copyright (c) 2024 Lassi Säike
 Copyright (c) 2019-2021 A. Orlenko
 Copyright (c) 2017 rlua
 

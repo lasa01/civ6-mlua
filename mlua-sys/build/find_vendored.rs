@@ -10,7 +10,7 @@ pub fn probe_lua() {
     #[cfg(feature = "lua52")]
     let artifacts = lua_src::Build::new().build(lua_src::Lua52);
 
-    #[cfg(feature = "lua51")]
+    #[cfg(any(feature = "lua51", feature = "lua51_civ6"))]
     let artifacts = lua_src::Build::new().build(lua_src::Lua51);
 
     #[cfg(feature = "luajit")]

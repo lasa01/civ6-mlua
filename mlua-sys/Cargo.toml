@@ -1,7 +1,7 @@
 [package]
 name = "mlua-sys"
 version = "0.5.2"
-authors = ["Aleksandr Orlenko <zxteam@pm.me>"]
+authors = ["Aleksandr Orlenko <zxteam@pm.me>", "Lassi Säike"]
 rust-version = "1.71"
 edition = "2021"
 repository = "https://github.com/khvzak/mlua"
@@ -12,7 +12,7 @@ license = "MIT"
 links = "lua"
 build = "build/main.rs"
 description = """
-Low level (FFI) bindings to Lua 5.4/5.3/5.2/5.1 (including LuaJIT) and Roblox Luau
+Low level (FFI) bindings to Lua 5.4/5.3/5.2/5.1 (including LuaJIT) and Roblox Luau and Civilization VI Lua
 """
 
 [package.metadata.docs.rs]
@@ -20,6 +20,7 @@ features = ["lua54", "vendored"]
 rustdoc-args = ["--cfg", "docsrs"]
 
 [features]
+lua51_civ6 = ["lua51"]
 lua54 = []
 lua53 = []
 lua52 = []
@@ -31,6 +32,7 @@ luau-codegen = ["luau"]
 luau-vector4 = ["luau"]
 vendored = ["lua-src", "luajit-src"]
 module = []
+default = ["lua51_civ6", "module"]
 
 [dependencies]
 

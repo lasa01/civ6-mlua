@@ -37,7 +37,7 @@ pub fn probe_lua() {
     let (incl_bound, excl_bound, alt_probe, ver) = ("5.3", "5.4", Some("lua5.3"), "5.3");
     #[cfg(feature = "lua52")]
     let (incl_bound, excl_bound, alt_probe, ver) = ("5.2", "5.3", Some("lua5.2"), "5.2");
-    #[cfg(feature = "lua51")]
+    #[cfg(any(feature = "lua51", feature = "lua51_civ6"))]
     let (incl_bound, excl_bound, alt_probe, ver) = ("5.1", "5.2", Some("lua5.1"), "5.1");
     #[cfg(feature = "luajit")]
     let (incl_bound, excl_bound, alt_probe, ver) = ("2.0.4", "2.2", None, "JIT");

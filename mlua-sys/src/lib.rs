@@ -7,6 +7,9 @@
 
 use std::os::raw::c_int;
 
+#[cfg(any(feature = "lua51_civ6", doc))]
+pub use lua51_civ6::*;
+
 #[cfg(any(feature = "lua54", doc))]
 pub use lua54::*;
 
@@ -16,7 +19,10 @@ pub use lua53::*;
 #[cfg(any(feature = "lua52", doc))]
 pub use lua52::*;
 
-#[cfg(any(feature = "lua51", feature = "luajit", doc))]
+#[cfg(all(
+    any(feature = "lua51", feature = "luajit", doc),
+    not(feature = "lua51_civ6")
+))]
 pub use lua51::*;
 
 #[cfg(any(feature = "luau", doc))]
@@ -80,6 +86,10 @@ pub const SYS_MIN_ALIGN: usize = 4;
 #[macro_use]
 mod macros;
 
+#[cfg(any(feature = "lua51_civ6", doc))]
+#[cfg_attr(docsrs, doc(cfg(feature = "lua51_civ6")))]
+pub mod lua51_civ6;
+
 #[cfg(any(feature = "lua54", doc))]
 #[cfg_attr(docsrs, doc(cfg(feature = "lua54")))]
 pub mod lua54;
@@ -92,7 +102,10 @@ pub mod lua53;
 #[cfg_attr(docsrs, doc(cfg(feature = "lua52")))]
 pub mod lua52;
 
-#[cfg(any(feature = "lua51", feature = "luajit", doc))]
+#[cfg(all(
+    any(feature = "lua51", feature = "luajit", doc),
+    not(feature = "lua51_civ6")
+))]
 #[cfg_attr(docsrs, doc(cfg(any(feature = "lua51", feature = "luajit"))))]
 pub mod lua51;
 

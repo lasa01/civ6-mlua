@@ -1,7 +1,11 @@
 [package]
 name = "mlua"
 version = "0.9.7" # remember to update mlua_derive
-authors = ["Aleksandr Orlenko <zxteam@pm.me>", "kyren <catherine@kyju.org>"]
+authors = [
+    "Aleksandr Orlenko <zxteam@pm.me>",
+    "kyren <catherine@kyju.org>",
+    "Lassi Säike",
+]
 rust-version = "1.71"
 edition = "2021"
 repository = "https://github.com/khvzak/mlua"
@@ -11,21 +15,27 @@ keywords = ["lua", "luajit", "luau", "async", "scripting"]
 categories = ["api-bindings", "asynchronous"]
 license = "MIT"
 description = """
-High level bindings to Lua 5.4/5.3/5.2/5.1 (including LuaJIT) and Roblox Luau
-with async/await features and support of writing native Lua modules in Rust.
+Civilization VI lua compatible mlua.
 """
 
 [package.metadata.docs.rs]
-features = ["lua54", "vendored", "async", "send", "serialize", "macros", "parking_lot", "unstable"]
+features = [
+    "lua54",
+    "vendored",
+    "async",
+    "send",
+    "serialize",
+    "macros",
+    "parking_lot",
+    "unstable",
+]
 rustdoc-args = ["--cfg", "docsrs"]
 
 [workspace]
-members = [
-    "mlua_derive",
-    "mlua-sys",
-]
+members = ["mlua_derive", "mlua-sys"]
 
 [features]
+lua51_civ6 = ["ffi/lua51_civ6", "lua51"]
 lua54 = ["ffi/lua54"]
 lua53 = ["ffi/lua53"]
 lua52 = ["ffi/lua52"]
@@ -42,6 +52,7 @@ send = []
 serialize = ["dep:serde", "dep:erased-serde", "dep:serde-value"]
 macros = ["mlua_derive/macros"]
 unstable = []
+default = ["lua51_civ6", "module"]
 
 [dependencies]
 mlua_derive = { version = "=0.9.2", optional = true, path = "mlua_derive" }
@@ -49,7 +60,9 @@ bstr = { version = "1.0", features = ["std"], default_features = false }
 once_cell = { version = "1.0" }
 num-traits = { version = "0.2.14" }
 rustc-hash = "1.0"
-futures-util = { version = "0.3", optional = true, default-features = false, features = ["std"] }
+futures-util = { version = "0.3", optional = true, default-features = false, features = [
+    "std",
+] }
 serde = { version = "1.0", optional = true }
 erased-serde = { version = "0.4", optional = true }
 serde-value = { version = "0.7", optional = true }

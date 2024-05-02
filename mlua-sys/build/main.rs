@@ -7,6 +7,8 @@ cfg_if::cfg_if! {
         include!("main_inner.rs");
     } else if #[cfg(all(feature = "lua51", not(any(feature = "lua54", feature = "lua53", feature = "lua52", feature = "luajit", feature = "luau"))))] {
         include!("main_inner.rs");
+    } else if #[cfg(all(feature = "lua51_civ6", not(any(feature = "lua54", feature = "lua53", feature = "lua52", feature = "luajit", feature = "luau"))))] {
+        include!("main_inner.rs");
     } else if #[cfg(all(feature = "luajit", not(any(feature = "lua54", feature = "lua53", feature = "lua52", feature = "lua51", feature = "luau"))))] {
         include!("main_inner.rs");
     } else if #[cfg(all(feature = "luau", not(any(feature = "lua54", feature = "lua53", feature = "lua52", feature = "lua51", feature = "luajit"))))] {
